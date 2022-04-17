@@ -12,8 +12,8 @@ const conversationsRoute = require('./routes/conversations');
 const bodyParser = require('body-parser');
 
 /* socket.io */
-
-const io = require("socket.io")(8900, {
+const port = process.env.PORT || 8900;
+const io = require("socket.io")(port, {
     cors: {
       origin: "https://volunteering-map.herokuapp.com/",
       origin: "http://localhost:3000/",
@@ -91,6 +91,6 @@ app.use(express.json());
 //Route Middlewares
 app.use('/api/user', authRoute);
 
-const port = process.env.PORT || 8000;
+const port2 = process.env.PORT || 8000;
 
-app.listen(port, () => console.log('Server Up and running'));
+app.listen(port2, () => console.log('Server Up and running'));
