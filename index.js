@@ -10,8 +10,11 @@ const commentsRoute = require('./routes/comments');
 const messagesRoute = require('./routes/messages');
 const conversationsRoute = require('./routes/conversations');
 const bodyParser = require('body-parser');
+const http = require('http');
+const server = http.createServer(app);
 
-const port = process.env.PORT || 8900;
+// const port = process.env.PORT || 8900;
+const port = 8900;
 
 ////////////////
 
@@ -40,11 +43,7 @@ app.use(express.json());
 //Route Middlewares
 app.use('/api/user', authRoute);
 
-app.listen(port, () => console.log('Server Up and running'));
-
 /* socket.io */
-const http = require('http');
-const server = http.createServer(app);
 const io = require('socket.io')(server);
 let users = [];
 
@@ -91,3 +90,5 @@ io.on("connection", (socket) => {
 });
 
 /////////
+
+app.listen(port, () => console.log('Server Up and running'));
