@@ -16,6 +16,7 @@ const bodyParser = require('body-parser');
 const io = require("socket.io")(8900, {
     cors: {
       origin: "https://volunteering-map.herokuapp.com/",
+      origin: "http://localhost:3000/",
     },
   });
   
