@@ -12,6 +12,7 @@ const conversationsRoute = require('./routes/conversations');
 const bodyParser = require('body-parser');
 
 /* socket.io */
+
 const io = require("socket.io")(8900, {
     cors: {
       origin: "https://volunteering-map.herokuapp.com/",
@@ -90,4 +91,5 @@ app.use(express.json());
 //Route Middlewares
 app.use('/api/user', authRoute);
 
+const port = process.env.PORT || 8000;
 app.listen(port, () => console.log('Server Up and running'));
