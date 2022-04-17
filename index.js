@@ -11,7 +11,12 @@ const messagesRoute = require('./routes/messages');
 const conversationsRoute = require('./routes/conversations');
 const bodyParser = require('body-parser');
 const http = require('http');
-const server = http.createServer(app);
+// const server = http.createServer(app);
+const WSServer = require('ws').Server;
+let wss;
+this.wss = wss;
+let server = new http.createServer(app);
+wss = new WSServer({ server })
 
 const port = process.env.PORT || 8900;
 // const port = 8900;
@@ -60,7 +65,7 @@ const getUser = (userId) => {
   return users.find((user) => user.userId === userId);
 };
 
-io.on("connection", (socket) => {
+wss.on("connection", (socket) => {
   //when ceonnect
   console.log("a user connected.");
 
