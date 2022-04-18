@@ -54,7 +54,7 @@ http.listen(port, () => console.log('Server Up and running'));
 
 const io = require('socket.io')(http, {
   cors: {
-    origin: "https://volunteering-map.herokuapp.com/",
+    origin: "https://volunteering-map.herokuapp.com",
   },
 });
 
